@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Smoke Suite" configfailurepolicy="continue">
+  <test name="Test">
+    <!-- Mandatory parameters -->
+    <parameter name="switchNames" value="ureg-dlspine1 ureg-dlspine2 ureg-9kleaf1 ureg-9kleaf2 ureg-9kleaf3 ureg-9kleaf4 ureg-9kleaf5" />
+    <parameter name="switchUserName" value="network-admin"/>
+    <parameter name="switchPassword" value="test123"/>
+    <parameter name="mgmtIp" value="10.110.0.180"/>
+    <parameter name="ldapServerIp" value="10.110.3.144"/>
+    <parameter name="iperfClientName" value="ureg-host2"/>
+    <parameter name="iperfServerName" value="ureg-host1"/>
+    <parameter name="CollectorName" value="vcfc-smoke"/>
+    <parameter name="fabricName" value="vcfc-smoke"/>
+    <parameter name="jsonFile" value="src/test/resources/pf_test_input.json"/>
+    <parameter name="jsonSM" value="src/test/resources/sm_test_input.json"/>
+    <parameter name="jsonSA" value="src/test/resources/sa_test_input.json"/>
+    <parameter name="jsonLayer1" value="src/test/resources/l1_test_input.json"/>
+    <parameter name="layer3JsonFile" value="src/test/resources/pf_test_input_l3.json"/>
+    <parameter name="vleJsonFile" value="src/test/resources/vle_input.json"/>
+    <parameter name="configFile" value="src/test/resources/hostConfig.txt"/>
+    <parameter name="configResetFile" value="src/test/resources/hostResetConfig.txt"/>
+    <parameter name="hostFile" value="src/test/resources/ans_hosts"/>
+    <parameter name="customTagFileInvalid" value="src/test/resources/CustomTagInvalid.csv"/>
+    <parameter name="customTagFileValid" value="src/test/resources/CustomTagvalid.csv"/>
+    <parameter name="customTagFileXMLInvalid" value="src/test/resources/CustomTagInvalid.xml"/>
+    <parameter name="customTagFileXMLValid" value="src/test/resources/CustomTagvalid.xml"/>
+    <parameter name="timeZone" value="US/Pacific"/>
+    <parameter name="supportedEmailService" value="Gmail"/>
+    <parameter name="sendersEmail" value="skedleremailreciever@gmail.com"/>
+    <parameter name="sendersEmailPwd" value="skedler@123"/>
+    <parameter name="webhookName" value="automatedWebHook"/>
+    <parameter name="webhookURL" value="http://vcf-mgr:8080/vcf-mgr/api/alerts"/>
+    <parameter name="alertName" value="automatedAlert"/>
+    <parameter name="portstatsPattern" value="all-portstatss"/>
+    <parameter name="portstatsscheduleIndexType" value="portstats"/>
+    <parameter name="portstatsscheduleTimeField" value="readTime"/>
+    <parameter name="connectionPattern" value="all-connections"/>
+    <parameter name="connectionscheduleIndexType" value="connection"/>
+    <parameter name="connectionscheduleTimeField" value="startedTime"/>
+    <parameter name="snmpPattern" value="all-snmptraps"/>
+    <parameter name="snmpscheduleIndexType" value="snmptrap"/>
+    <parameter name="snmpscheduleTimeField" value="@timestamp"/>
+    <parameter name="scheduleDateField" value="2"/>
+    <parameter name="receiverEmail" value="skedleremailreciever@gmail.com"/>
+    <parameter name="receiverEmailPwd" value="skedler@123"/>
+    <parameter name="allPortStatsQueryField" value="switchName,portSpeed,portNumber,counter"/>
+    <parameter name="allPortStatsQueryType" value="Must be,Should be,Must be,Must be"/>
+    <parameter name="allPortStatsQueryCondition" value="==,>=,==,>="/>
+    <parameter name="allPortStatsQueryValue" value="ureg-9kleaf1,0,0,0"/>
+    <parameter name="allConnectionsQueryField" value="srcIp,dstIp,switchName"/>
+    <parameter name="allConnectionsQueryType" value="Must be,Must be,Should be"/>
+    <parameter name="allConnectionsQueryCondition" value="==,==,=="/>
+    <parameter name="allConnectionsQueryValue" value="40.1.1.10,30.1.1.10,ureg-9kleaf1"/>
+    <parameter name="snmpQueryField" value="trapType"/>
+    <parameter name="snmpQueryType" value="Must be"/>
+    <parameter name="snmpQueryCondition" value="=="/>
+    <parameter name="snmpQueryValue" value="loginFailure"/>
+    <!-- Traffic parameters -->
+    <parameter name="trafficSrcIp" value="40.1.1.10"/>
+    <parameter name="trafficDestIp" value="30.1.1.10"/>
+    <parameter name="trafficNumSessions" value="10"/>
+    <parameter name="trafficInterval" value="20"/>
+    <!-- PA parameters -->
+    <parameter name="inPort" value ="7"/>
+    <parameter name="outPort" value ="32"/>
+    <parameter name="flowDuration" value ="60"/>
+	<!-- NOTE: Additional optional parameters are:
+	<parameter name="dataNodeHost" value="10.9.8.85"></parameter>
+	<parameter name = "password" value="value_to_be_set_for_vcfc_instance"></parameter>
+	<parameter name= "bsUserId" value="BS_uid"></parameter>
+	<parameter name= "bsKey" value="BS_Key"></parameter>
+	<parameter name="collectorName" value="coll1"></parameter>
+	<parameter name= "pcapName" value="pcap1"></parameter>
+	<parameter name= "flowName" value="flow1"></parameter>
+	//Currently these optional parameters are being set to default values if the user doesn't specify them.
+   END OF NOTE -->
+    <classes>
+      
+      <class name="com.mycompany.app.test.TrivagoTest"/>
+      
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
